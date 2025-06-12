@@ -82,7 +82,7 @@ for target in "${TARGETS[@]}"; do
     fi
 done
 
-mkdir -p "$HOME/.config"
+# mkdir -p "$HOME/.config"
 
 # ----------------------------------------
 # 6. Apply dotfiles with stow
