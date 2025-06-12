@@ -91,7 +91,7 @@ echo "🔗 Setting up symbolic links for dotfiles..."
 cd "$SCRIPT_DIR/dotfiles"
 
 for dir in */; do
-    stow -v --restow "${dir%/}"
+    stow -v --restow "-t ~ ${dir%/}"
 done
 
 echo "✅ Setup complete!"
