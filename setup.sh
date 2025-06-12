@@ -78,7 +78,7 @@ for target in "${TARGETS[@]}"; do
         rm -rf "$target"
     fi
 done
-
+mkdir -p "$HOME/.config"
 # ----------------------------------------
 # 6. dotfiles 적용 (stow)
 # ----------------------------------------
