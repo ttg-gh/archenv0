@@ -27,7 +27,8 @@ yay -Syu --noconfirm
 # ----------------------------------------
 # 2. Read package lists
 # ----------------------------------------
-cd "$(dirname "$0")"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$SCRIPT_DIR"
 
 PACMAN_PACKAGES=()
 AUR_PACKAGES=()
@@ -87,7 +88,7 @@ mkdir -p "$HOME/.config"
 # 6. Apply dotfiles with stow
 # ----------------------------------------
 echo "🔗 Setting up symbolic links for dotfiles..."
-cd "$(dirname "$0")/dotfiles"
+cd "$SCRIPT_DIR/dotfiles"
 
 for dir in */; do
     stow -v --restow "$dir"
