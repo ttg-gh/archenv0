@@ -25,6 +25,8 @@ yay -Syu --noconfirm
 # ----------------------------------------
 # 2. 패키지 목록 읽기
 # ----------------------------------------
+cd "$(dirname "$0")"
+
 PACMAN_PACKAGES=()
 AUR_PACKAGES=()
 
@@ -88,4 +90,4 @@ for dir in */; do
 done
 
 echo "✅ 모든 설정 완료!"
-
+cd
