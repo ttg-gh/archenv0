@@ -2,16 +2,16 @@
 
 set -e
 
-echo "🔧 Arch 개발 환경 셋업 시작..."
+echo "🔧 Starting Arch development environment setup..."
 
 # ----------------------------------------
-# 1. yay 설치 확인 및 설치
+# 1. Check and install yay
 # ----------------------------------------
 
 sudo pacman -Syu --noconfirm
 
 if ! command -v yay &> /dev/null; then
-    echo "📦 yay가 설치되어 있지 않습니다. 설치 중..."
+    echo "📦 yay is not installed. Installing..."
     sudo pacman -S --needed --noconfirm git base-devel
 
     tempdir=$(mktemp -d)
@@ -19,11 +19,13 @@ if ! command -v yay &> /dev/null; then
     (cd "$tempdir/yay" && makepkg -si --noconfirm)
     rm -rf "$tempdir"
 else
-    echo "✅ yay가 이미 설치되어 있습니다."
+    echo "✅ yay is already installed."
 fi
+
 yay -Syu --noconfirm
+
 # ----------------------------------------
-# 2. 패키지 목록 읽기
+# 2. Read package lists
 # ----------------------------------------
 cd "$(dirname "$0")"
 
@@ -39,33 +41,33 @@ if [ -f ./aur.txt ]; then
 fi
 
 # ----------------------------------------
-# 3. Pacman 패키지 설치
+# 3. Install pacman packages
 # ----------------------------------------
-echo "📦 Pacman 패키지 설치 중..."
+echo "📦 Installing pacman packages..."
 for pkg in "${PACMAN_PACKAGES[@]}"; do
     if ! pacman -Qq "$pkg" &>/dev/null; then
         sudo pacman -S --noconfirm "$pkg"
     else
-        echo "✅ $pkg (이미 설치됨)"
+        echo "✅ $pkg is already installed."
     fi
 done
 
 # ----------------------------------------
-# 4. AUR 패키지 설치
+# 4. Install AUR packages
 # ----------------------------------------
-echo "📦 AUR 패키지 설치 중..."
+echo "📦 Installing AUR packages..."
 for pkg in "${AUR_PACKAGES[@]}"; do
     if ! yay -Qq "$pkg" &>/dev/null; then
         yay -S --noconfirm "$pkg"
     else
-        echo "✅ $pkg (이미 설치됨)"
+        echo "✅ $pkg is already installed."
     fi
 done
 
 # ----------------------------------------
-# 5. 기존 설정 제거 (지정된 경로만)
+# 5. Remove old configs
 # ----------------------------------------
-echo "🧹 기존 설정 파일 제거 중..."
+echo "🧹 Removing existing config files..."
 
 TARGETS=(
     "$HOME/.bashrc"
@@ -74,20 +76,22 @@ TARGETS=(
 
 for target in "${TARGETS[@]}"; do
     if [ -e "$target" ]; then
-        echo "⚠️  삭제: $target"
+        echo "⚠️  Deleting: $target"
         rm -rf "$target"
     fi
 done
+
 mkdir -p "$HOME/.config"
+
 # ----------------------------------------
-# 6. dotfiles 적용 (stow)
+# 6. Apply dotfiles with stow
 # ----------------------------------------
-echo "🔗 dotfiles 심볼릭 링크 설정 중..."
+echo "🔗 Setting up symbolic links for dotfiles..."
 cd "$(dirname "$0")/dotfiles"
 
 for dir in */; do
     stow -v --restow "$dir"
 done
 
-echo "✅ 모든 설정 완료!"
+echo "✅ Setup complete!"
 cd
