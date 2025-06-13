@@ -10,7 +10,6 @@ neovim
 fzf
 tmux
 lazygit
-yazi
 hyprland
 hyprpaper
 hyprshot
