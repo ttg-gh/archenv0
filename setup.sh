@@ -94,23 +94,24 @@ for dir in */; do
     stow -v --restow -t "$HOME" "${dir%/}"
 done
 cd
-# ----------------------------------------
-# 7. Setup ly
-# ----------------------------------------
-echo "🔗 Setting up ly..."
-sudo systemctl enable ly.service
-sudo systemctl start ly.service
 
 # ----------------------------------------
-# 8. Setup ufw
+# Setup ufw
 # ----------------------------------------
-echo "🔗 Setting up ufw..."
+echo "Setting up ufw..."
 sudo ufw limit 22/tcp
 sudo ufw allow 80/tcp
 sudo ufw allow 443/tcp
 sudo ufw default deny incoming
 sudo ufw default allow outgoing
 sudo ufw enable
+
+# ----------------------------------------
+# Setup ly
+# ----------------------------------------
+echo "Setting up ly..."
+sudo systemctl enable ly.service
+sudo systemctl start ly.service
 
 echo "✅ Setup complete!"
 cd
