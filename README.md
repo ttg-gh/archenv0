@@ -11,6 +11,8 @@ GPU(nvidia) = https://github.com/korvahannu/arch-nvidia-drivers-installation-gui
 # 3.Librewolf setup
 about:preferences#privacy -> DNS over HTTPS, Max Protection (LibreDNS(No Filtering))
 
+add search : BraveSearch https://search.brave.com/search?q=%s
+
 add addons : proton pass
 
 # 4.Laptop setup (optional)
