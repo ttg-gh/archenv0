@@ -93,7 +93,7 @@ cd "$SCRIPT_DIR/dotfiles"
 for dir in */; do
     stow -v --restow -t "$HOME" "${dir%/}"
 done
-
+cd
 # ----------------------------------------
 # 7. Setup ly
 # ----------------------------------------
