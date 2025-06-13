@@ -1,5 +1,6 @@
 # 1. Run setup.sh
 chmod +x setup.sh
+
 run setup.sh
 
 # 2.Cpu, Gpu setup
