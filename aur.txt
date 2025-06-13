@@ -1,4 +1,4 @@
 kime-bin
 librewolf-bin
 freetube-bin
-yazi-git
+yazi-nightly-bin
