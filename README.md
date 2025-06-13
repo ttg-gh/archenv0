@@ -5,6 +5,7 @@ run setup.sh
 
 # 2.Cpu, Gpu setup
 CPU = https://wiki.archlinux.org/title/Microcode
+
 GPU(nvidia) = https://github.com/korvahannu/arch-nvidia-drivers-installation-guide
 
 # 3.Librewolf setup
