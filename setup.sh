@@ -98,9 +98,13 @@ cd
 # 7. Setup ly
 # ----------------------------------------
 echo "🔗 Setting up ly..."
-
 sudo systemctl enable ly.service
 sudo systemctl start ly.service
+
+# ----------------------------------------
+# 8. Setup ufw
+# ----------------------------------------
+echo "🔗 Setting up ufw..."
 
 echo "✅ Setup complete!"
 cd
