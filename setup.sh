@@ -105,7 +105,6 @@ sudo systemctl start ly.service
 # 8. Setup ufw
 # ----------------------------------------
 echo "🔗 Setting up ufw..."
-
 sudo ufw limit 22/tcp
 sudo ufw allow 80/tcp
 sudo ufw allow 443/tcp
