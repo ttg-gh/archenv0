@@ -94,5 +94,13 @@ for dir in */; do
     stow -v --restow -t "$HOME" "${dir%/}"
 done
 
+# ----------------------------------------
+# 7. Setup ly
+# ----------------------------------------
+echo "🔗 Setting up ly..."
+
+sudo systemctl enable ly.service
+sudo systemctl start ly.service
+
 echo "✅ Setup complete!"
 cd
