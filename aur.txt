@@ -1,0 +1,4 @@
+kime-bin
+librewolf-bin
+freetube-bin
+yazi-nightly-bin
